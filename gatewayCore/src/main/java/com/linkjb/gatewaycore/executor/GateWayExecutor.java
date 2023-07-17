@@ -100,7 +100,7 @@ public class GateWayExecutor {
 
         // accessToken
         if (accessToken==null || accessToken.trim().length()==0) {
-            logger.warn(">>>>>>>>>>> xxl-job accessToken is empty. To ensure system security, please set the accessToken.");
+            logger.warn(">>>>>>>>>>> shark-gateway accessToken is empty. To ensure system security, please set the accessToken.");
         }
 
         // start
@@ -122,7 +122,7 @@ public class GateWayExecutor {
 //                    try {
 //                        oldJobThread.join();
 //                    } catch (InterruptedException e) {
-//                        logger.error(">>>>>>>>>>> xxl-job, JobThread destroy(join) error, jobId:{}", item.getKey(), e);
+//                        logger.error(">>>>>>>>>>> shark-gateway, JobThread destroy(join) error, jobId:{}", item.getKey(), e);
 //                    }
 //                }
 //            }

@@ -28,11 +28,11 @@ public class ExecutorRegistryThread {
 
         // valid
         if (appname==null || appname.trim().length()==0) {
-            logger.warn(">>>>>>>>>>> xxl-job, executor registry config fail, appname is null.");
+            logger.warn(">>>>>>>>>>> shark-gateway, executor registry config fail, appname is null.");
             return;
         }
         if (GateWayExecutor.getAdminBizList() == null) {
-            logger.warn(">>>>>>>>>>> xxl-job, executor registry config fail, adminAddresses is null.");
+            logger.warn(">>>>>>>>>>> shark-gateway, executor registry config fail, adminAddresses is null.");
             return;
         }
 
@@ -49,13 +49,13 @@ public class ExecutorRegistryThread {
                                 ReturnT<String> registryResult = adminBiz.registry(registryParam);
                                 if (registryResult!=null && ReturnT.SUCCESS_CODE == registryResult.getCode()) {
                                     registryResult = ReturnT.SUCCESS;
-                                    logger.debug(">>>>>>>>>>> xxl-job registry success, registryParam:{}, registryResult:{}", new Object[]{registryParam, registryResult});
+                                    logger.debug(">>>>>>>>>>> shark-gateway registry success, registryParam:{}, registryResult:{}", new Object[]{registryParam, registryResult});
                                     break;
                                 } else {
-                                    logger.info(">>>>>>>>>>> xxl-job registry fail, registryParam:{}, registryResult:{}", new Object[]{registryParam, registryResult});
+                                    logger.info(">>>>>>>>>>> shark-gateway registry fail, registryParam:{}, registryResult:{}", new Object[]{registryParam, registryResult});
                                 }
                             } catch (Exception e) {
-                                logger.info(">>>>>>>>>>> xxl-job registry error, registryParam:{}", registryParam, e);
+                                logger.info(">>>>>>>>>>> shark-gateway registry error, registryParam:{}", registryParam, e);
                             }
 
                         }
@@ -72,7 +72,7 @@ public class ExecutorRegistryThread {
                         }
                     } catch (InterruptedException e) {
                         if (!toStop) {
-                            logger.warn(">>>>>>>>>>> xxl-job, executor registry thread interrupted, error msg:{}", e.getMessage());
+                            logger.warn(">>>>>>>>>>> shark-gateway, executor registry thread interrupted, error msg:{}", e.getMessage());
                         }
                     }
                 }
@@ -85,14 +85,14 @@ public class ExecutorRegistryThread {
                             ReturnT<String> registryResult = adminBiz.registryRemove(registryParam);
                             if (registryResult!=null && ReturnT.SUCCESS_CODE == registryResult.getCode()) {
                                 registryResult = ReturnT.SUCCESS;
-                                logger.info(">>>>>>>>>>> xxl-job registry-remove success, registryParam:{}, registryResult:{}", new Object[]{registryParam, registryResult});
+                                logger.info(">>>>>>>>>>> shark-gateway registry-remove success, registryParam:{}, registryResult:{}", new Object[]{registryParam, registryResult});
                                 break;
                             } else {
-                                logger.info(">>>>>>>>>>> xxl-job registry-remove fail, registryParam:{}, registryResult:{}", new Object[]{registryParam, registryResult});
+                                logger.info(">>>>>>>>>>> shark-gateway registry-remove fail, registryParam:{}, registryResult:{}", new Object[]{registryParam, registryResult});
                             }
                         } catch (Exception e) {
                             if (!toStop) {
-                                logger.info(">>>>>>>>>>> xxl-job registry-remove error, registryParam:{}", registryParam, e);
+                                logger.info(">>>>>>>>>>> shark-gateway registry-remove error, registryParam:{}", registryParam, e);
                             }
 
                         }
@@ -103,7 +103,7 @@ public class ExecutorRegistryThread {
                         logger.error(e.getMessage(), e);
                     }
                 }
-                logger.info(">>>>>>>>>>> xxl-job, executor registry thread destroy.");
+                logger.info(">>>>>>>>>>> shark-gateway, executor registry thread destroy.");
 
             }
         });

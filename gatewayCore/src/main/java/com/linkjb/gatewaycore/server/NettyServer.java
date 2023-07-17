@@ -79,7 +79,7 @@ public class NettyServer {
                     // bind
                     ChannelFuture future = bootstrap.bind(port).sync();
 
-                    logger.info(">>>>>>>>>>> xxl-job remoting server start success, nettype = {}, port = {}", NettyServer.class, port);
+                    logger.info(">>>>>>>>>>> shark-gateway remoting server start success, nettype = {}, port = {}", NettyServer.class, port);
 
                     // start registry
                     startRegistry(appname, address);
@@ -88,9 +88,9 @@ public class NettyServer {
                     future.channel().closeFuture().sync();
 
                 } catch (InterruptedException e) {
-                    logger.info(">>>>>>>>>>> xxl-job remoting server stop.");
+                    logger.info(">>>>>>>>>>> shark-gateway remoting server stop.");
                 } catch (Exception e) {
-                    logger.error(">>>>>>>>>>> xxl-job remoting server error.", e);
+                    logger.error(">>>>>>>>>>> shark-gateway remoting server error.", e);
                 } finally {
                     // stop
                     try {
@@ -113,7 +113,7 @@ public class NettyServer {
         }
         // stop registry
         stopRegistry();
-        logger.info(">>>>>>>>>>> xxl-job remoting server destroy success.");
+        logger.info(">>>>>>>>>>> shark-gateway remoting server destroy success.");
     }
 
 
@@ -226,7 +226,7 @@ public class NettyServer {
 
         @Override
         public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
-            logger.error(">>>>>>>>>>> xxl-job provider netty_http server caught exception", cause);
+            logger.error(">>>>>>>>>>> shark-gateway provider netty_http server caught exception", cause);
             ctx.close();
         }
 
@@ -234,7 +234,7 @@ public class NettyServer {
         public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
             if (evt instanceof IdleStateEvent) {
                 ctx.channel().close();      // beat 3N, close if idle
-                logger.debug(">>>>>>>>>>> xxl-job provider netty_http server close an idle channel.");
+                logger.debug(">>>>>>>>>>> shark-gateway provider netty_http server close an idle channel.");
             } else {
                 super.userEventTriggered(ctx, evt);
             }

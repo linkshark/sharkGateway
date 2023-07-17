@@ -97,7 +97,7 @@ public class LogFileCleanThread {
                         }
                     }
                 }
-                logger.info(">>>>>>>>>>> xxl-job, executor JobLogFileCleanThread thread destroy.");
+                logger.info(">>>>>>>>>>> shark-gateway, executor JobLogFileCleanThread thread destroy.");
 
             }
         });

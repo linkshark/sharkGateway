@@ -7,7 +7,7 @@ import com.linkjb.gatewaycore.biz.model.ReturnT;
 import com.linkjb.gatewaycore.util.RemotingUtil;
 
 
-import java.util.List;
+import java.util.*;
 
 /**
  * admin api test
@@ -18,6 +18,7 @@ public class GateWayAdminBizClient implements GateWayAdminBiz {
 
     public GateWayAdminBizClient() {
     }
+
     public GateWayAdminBizClient(String addressUrl, String accessToken) {
         this.addressUrl = addressUrl;
         this.accessToken = accessToken;
@@ -28,14 +29,15 @@ public class GateWayAdminBizClient implements GateWayAdminBiz {
         }
     }
 
-    private String addressUrl ;
+    private String addressUrl;
     private String accessToken;
     private int timeout = 3;
 
 
     @Override
     public ReturnT<String> callback(List<HandleCallbackParam> callbackParamList) {
-        return RemotingUtil.postBody(addressUrl+"api/callback", accessToken, timeout, callbackParamList, String.class);
+
+        return RemotingUtil.postBody(addressUrl + "api/callback", accessToken, timeout, callbackParamList, String.class);
     }
 
     @Override
